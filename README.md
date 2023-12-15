@@ -40,8 +40,24 @@ This project is an Express.js server template, designed to provide a robust and 
 
 ## API Endpoints
 
-Document your API endpoints here, providing details on the available routes, methods, and their functionalities.
+# Creating New APIs
 
+To add a new API endpoint, follow these steps:
+
+1. **Create a new file** under the `src/api` directory. For example, `src/api/users.ts`.
+
+2. **Define your route and handler** in this file. Example:
+
+   ```typescript
+   import { Router } from 'express';
+
+   const router = Router();
+
+   router.get('/users', (req, res) => {
+     res.json({ message: 'List of users' });
+   });
+
+   export default router;
 ## Contributing
 
 Contributions to improve this template are welcome. Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
