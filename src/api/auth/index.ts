@@ -39,7 +39,7 @@ router.post(
       }
 
       const token = jwt.sign({ user }, process.env.JWT_SECRET!, {
-        expiresIn: "1h",
+        expiresIn: process.env.EXPIRE_TIME,
       });
 
       return res
