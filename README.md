@@ -37,10 +37,9 @@ This project is an Express.js server template, designed to provide a robust and 
    ```bash
    npm run dev
 
+# API Endpoints
 
-## API Endpoints
-
-# Creating New APIs
+## Creating New APIs and Securing
 
 To add a new API endpoint, follow these steps:
 
@@ -58,6 +57,30 @@ To add a new API endpoint, follow these steps:
    });
 
    export default router;
+   
+3. **Import the new route module** at the top of your `index.ts` file. For example, if you created `users.ts` under the `src/api` directory, you would import it like this:
+
+   ```typescript
+   import userRoutes from './api/users';
+   app.use('/api', userRoutes);
+
+## Applying Middleware to a Route
+
+Middleware functions in Express.js can be used for various purposes like authentication, logging, or modifying the request/response objects. Here's how you can apply middleware to a route in your Express.js application:
+
+### Example: Using Middleware in a Route
+
+Assuming you have a middleware function already defined (named `middleware` in this case), you can apply it to your routes as shown in the following example:
+
+```typescript
+import middleware from './path-to-middleware';
+
+app.get("/", middleware, (req: CustomRequest, res: Response) => {
+  console.log(req.user, 'asd'); // Example usage of a property set by the middleware
+  res.send("Hello World!");
+});
+```
+
 ## Contributing
 
 Contributions to improve this template are welcome. Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
