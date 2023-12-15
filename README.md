@@ -81,6 +81,43 @@ app.get("/", middleware, (req: CustomRequest, res: Response) => {
 });
 ```
 
+# Environment Variables
+
+The application uses environment variables for configuration. This allows you to set key parameters and secrets without hard-coding them into your application code. The `.env` file is the default place to store these settings.
+
+Here's an explanation of the environment variables used in this project:
+
+1. **`DATABASE_URL`**: This is the connection string for your database. It includes the username, password, host, port, and database name. For example:
+```bash
+DATABASE_URL="mysql://username:password@localhost:3306/database_name"
+```
+
+Replace `username`, `password`, `localhost`, `3306`, and `database_name` with your actual database credentials and details.
+
+2. **`JWT_SECRET`**: This is the secret key used for signing JSON Web Tokens (JWT). It's crucial for the security of your JWT implementation. For example:
+```bash
+JWT_SECRET="your_secret_key"
+```
+
+Ensure this key is kept secret and not exposed publicly.
+
+3. **`EXPIRE_TIME`**: This defines the expiration time of the JWT. It determines how long a token remains valid after being issued. For example:
+```bash
+EXPIRE_TIME="1h"
+```
+
+This sets the token to expire in 1 hour. You can adjust the duration according to your requirements.
+
+### Setting Up the `.env` File
+
+To set up your `.env` file:
+
+1. Create a file named `.env` in the root directory of your project.
+2. Add the environment variables listed above to the file with your specific settings.
+3. Make sure to never commit this file to your version control system (e.g., Git). Add `.env` to your `.gitignore` file to prevent it from being shared publicly.
+
+The application will load these settings at runtime, and they will be accessible in your code through `process.env.VARIABLE_NAME`.
+
 ## Contributing
 
 Contributions to improve this template are welcome. Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
